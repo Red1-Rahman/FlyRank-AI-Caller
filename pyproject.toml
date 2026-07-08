@@ -1,0 +1,44 @@
+[project]
+name = "flyrank-ai-caller"
+version = "0.1.0"
+description = "An engineered AI calling core implementing abstraction gateways, structured data validation, and lexical guardrails."
+readme = "README.md"
+requires-python = "==3.11.*"
+authors = [
+    { name = "Redwan Rahman", email = "redwanrahman2002@outloook.com" }
+]
+dependencies = [
+    "portkey-ai>=0.1.0",
+    "anthropic>=0.25.0",
+    "pydantic>=2.6.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "mypy>=1.8.0",
+    "ruff>=0.2.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "B", "I", "N"] # Error, Flake8, Bugbear, Isort, Naming
+
+[tool.mypy]
+python_version = "3.11"
+plugins = ["pydantic.mypy"]
+strict = true
+warn_return_any = true
+warn_unused_configs = true
